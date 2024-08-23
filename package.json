@@ -1,0 +1,53 @@
+{
+    "name": "my-vue-project",
+    "version": "1.0.0",
+    "description": "A personal projects webpage built with Vue 3",
+    "main": "src/main.js",
+    "scripts": {
+      "serve": "vue-cli-service serve",
+      "build": "vue-cli-service build",
+      "lint": "vue-cli-service lint",
+      "test:unit": "vue-cli-service test:unit"
+    },
+    "dependencies": {
+      "core-js": "^3.8.3",
+      "vue": "^3.2.45",
+      "vue-router": "^4.2.0",
+      "vuex": "^4.2.2"
+    },
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "^5.1.1",
+      "@vue/cli-plugin-eslint": "^5.1.1",
+      "@vue/cli-service": "^5.1.1",
+      "@vue/test-utils": "^2.1.1",
+      "babel-eslint": "^10.1.0",
+      "eslint": "^8.31.0",
+      "eslint-plugin-vue": "^9.9.0",
+      "jest": "^29.5.0",
+      "vue-jest": "^6.6.0"
+    },
+    "eslintConfig": {
+      "extends": [
+        "plugin:vue/vue3-recommended",
+        "eslint:recommended"
+      ],
+      "rules": {
+        "vue/no-unused-vars": "warn",
+        "vue/prop-name-casing": ["error", "camelCase"],
+        "vue/no-v-html": "off"
+      }
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+  
