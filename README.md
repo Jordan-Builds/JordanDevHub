@@ -1,3 +1,4 @@
 # JordanDevHub
 This is for my Personal Projects 
-hi
+
+Home: About, Portfolio Page, Contact 
