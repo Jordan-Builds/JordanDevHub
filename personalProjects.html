@@ -6,44 +6,63 @@
     <title>Perosnal Projects</title>
     <style>
         body {
-            background-color: black;
-            color: white;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f9;
+            color: black;
         }
-        
-        a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        header {
+            background-color: #4169E1;
             color: white;
-        }
-        
-        p {
-            margin: 0.5em 0;
-        }
-        
-        .container {
             padding: 20px;
-        }
-        h1{
             text-align: center;
         }
-        </style>
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .intro {
+            background-color: #f0f0f0;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+        }
+
+        footer {
+            background-color: #4169E1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Welcome to My Personal Projects Pages</h1>
         <p>This is where my outside websites and other projects from school are placed.</p>
-    </header>
-    <main>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -51,13 +70,18 @@
                 <li><a href="personalProjects.html">Personal Projects</a></li>
             </ul>
         </nav>
+    </header>
+    <section class="intro">
 
         <h1>Bakery Website</h1>
         <p><a href="https://christinespatisseries.com/">Website Link</a></p>
-        <p>This website I did for my cousin on GoDaddy to promoter her business</p>
+        <p>This website I did for my cousin on GoDaddy to promote her business</p>
         
         <h1>Tkinter UI for Database</h1>
-    </main>
+        <p><a href="movieDB.py">Link to Python Database UI</a></p>
+        <p>This link is to download the code used for our database UI. My team and I did a Movie and tv show database, this databse would hold all your favorite movie and tv shows in one place. We used this UI as a hub to login and have your own place for your things only.</p>
+        <p>Disclamier: </p>
+    </section>
     <footer>
         <p>&copy; 2024 Your Website</p>
     </footer>

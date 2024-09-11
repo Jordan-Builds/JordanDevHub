@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-import mysql.connector
 import hashlib  # For password hashing
 
 class MovieManager:
@@ -9,13 +8,7 @@ class MovieManager:
         self.root.title("Movie Manager")
 
         # Database connection
-        self.db_connection = mysql.connector.connect(
-            host="localhost",  # Replace with your database host
-            user="root",       # Replace with your database username
-            password="Mario123#",       # Replace with your database password
-            database="movieDB"
-        )
-        self.cursor = self.db_connection.cursor()
+        
 
         # Variables
         self.username_var = tk.StringVar()
@@ -106,7 +99,7 @@ class MovieManager:
                 self.cursor.execute("INSERT INTO watched (WmovieID) VALUES (%s)", (movie_id,))
             self.db_connection.commit()
             messagebox.showinfo("Movie Added", "Movie added successfully")
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}")
 
     def open_delete_movie_window(self):
@@ -126,7 +119,7 @@ class MovieManager:
             self.cursor.execute(query, (movie_id,))
             self.db_connection.commit()
             messagebox.showinfo("Movie Deleted", f"Movie ID {movie_id} deleted successfully")
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}")
 
     def open_modify_movie_window(self):
@@ -174,7 +167,7 @@ class MovieManager:
                 messagebox.showinfo("Update Successful", f"{modification_option} for Movie ID {movie_id} updated to: {new_value}")
             else:
                 messagebox.showerror("Error", "Invalid modification option")
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}")
             
     def display_movies(self):
@@ -196,7 +189,7 @@ class MovieManager:
             # Buttons to add movies to Watched or To Be Watched lists
             tk.Button(display_window, text="Add to Watched", command=lambda: self.add_to_watched(movie_listbox.get(tk.ANCHOR))).pack(padx=10, pady=5)
             tk.Button(display_window, text="Add to To Be Watched", command=lambda: self.add_to_to_be_watched(movie_listbox.get(tk.ANCHOR))).pack(padx=10, pady=5)
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}") 
             
     def open_create_user_window(self):
@@ -226,7 +219,7 @@ class MovieManager:
             self.cursor.execute(query, (username, hashed_password, email))
             self.db_connection.commit()
             messagebox.showinfo("User Created", "New user created successfully")
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}")
             
     def search_movie(self):
@@ -249,7 +242,7 @@ class MovieManager:
                 messagebox.showinfo("Movie Found", f"ID: {movie_id}\nDirector: {director}\nActor: {actor}\nDescription: {description}")
             else:
                 messagebox.showinfo("Movie Not Found", "No movie found with that ID")
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}")
             
             
@@ -261,7 +254,7 @@ class MovieManager:
                 self.cursor.execute(query, (movie_id,))
                 self.db_connection.commit()
                 messagebox.showinfo("Success", f"Movie ID {movie_id} added to Watched list")
-            except mysql.connector.Error as err:
+            except err as err:
                 messagebox.showerror("Error", f"An error occurred: {err}")
 
     def add_to_to_be_watched(self, movie_info):
@@ -272,7 +265,7 @@ class MovieManager:
                 self.cursor.execute(query, (movie_id,))
                 self.db_connection.commit()
                 messagebox.showinfo("Success", f"Movie ID {movie_id} added to To Be Watched list")
-            except mysql.connector.Error as err:
+            except err as err:
                 messagebox.showerror("Error", f"An error occurred: {err}")
 
     def extract_movie_id(self, movie_info):
@@ -307,7 +300,7 @@ class MovieManager:
 
             for row in rows:
                 movie_listbox.insert(tk.END, f"ID: {row[0]}, Director: {row[1]}, Actor: {row[2]}, Description: {row[3]}")
-        except mysql.connector.Error as err:
+        except err as err:
             messagebox.showerror("Error", f"An error occurred: {err}")
 
 

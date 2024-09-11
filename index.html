@@ -6,42 +6,64 @@
     <title>Home Page</title>
     <style>
         body {
-            background-color: black;
-            color: white;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f9;
+            color: #000000;
         }
-        
-        a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        header {
+            background-color: #4169E1;
             color: white;
-        }
-        
-        p {
-            margin: 0.5em 0;
-        }
-        
-        .container {
             padding: 20px;
+            text-align: center;
         }
-        </style>
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .intro {
+            background-color: #f0f0f0;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+        }
+
+        footer {
+            background-color: #4169E1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
         
 </head>
 <body>
     <header>
-        <h1>Welcome to Our Website</h1>
-        <p>This is the home page.</p>
-    </header>
-    <main>
+        <h1>Home Page</h1>
+        <h2>Jordan Lewis</h2>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -49,9 +71,11 @@
                 <li><a href="personalProjects.html">Personal Projects</a></li>
             </ul>
         </nav>
-       
-       
-    </main>
+    </header>
+    <section class="intro">
+        <h2>Welcome to My Portfolio</h2>
+        <p>Hi, I'm Jordan Lewis. Check out my work and feel free to reach out to me!</p>
+    </section>
     <footer>
         <p>&copy; 2024 Your Website</p>
     </footer>
