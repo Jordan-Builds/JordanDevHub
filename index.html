@@ -1,85 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #000000;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - Jordan Lewis</title>
+<style>
+    /* Fonts & General */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; scroll-behavior: smooth; transition: background 0.3s, color 0.3s; }
+    header { padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; transition: background 0.3s; }
+    nav ul { list-style: none; margin: 0; padding: 0; text-align: center; }
+    nav ul li { display: inline; margin: 0 15px; }
+    nav ul li a { text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    nav ul li a:hover { text-decoration: underline; }
 
-        header {
-            background-color: #4169E1;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    /* Light & Dark mode colors */
+    body.light { background: #f4f4f9; color: #000; }
+    body.light header { background: #4169E1; color: white; }
+    body.light nav ul li a { color: white; }
+    body.dark { background: #1c1c1c; color: #f4f4f9; }
+    body.dark header { background: #000; color: #f4f4f9; }
+    body.dark nav ul li a { color: #f4f4f9; }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
+    /* Hero */
+    .hero { padding: 100px 20px; text-align: center; transition: background 0.3s; }
+    .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.5rem; margin-bottom: 30px; min-height: 2em; }
+    .hero a { display: inline-block; margin: 5px; padding: 10px 25px; background: #fff; color: #4169E1; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; }
+    .hero a:hover { background: #f0f0f0; }
 
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
+    /* Dark Mode Toggle */
+    .toggle-btn { position: fixed; top: 20px; right: 20px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        section {
-            padding: 50px;
-            text-align: center;
-        }
-
-        .intro {
-            background-color: #f0f0f0;
-        }
-
-        .intro h2 {
-            font-size: 2rem;
-        }
-
-        footer {
-            background-color: #4169E1;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
-        
+    footer { padding: 20px; text-align: center; transition: background 0.3s; }
+    body.light footer { background: #4169E1; color: white; }
+    body.dark footer { background: #000; color: #f4f4f9; }
+</style>
 </head>
-<body>
-    <header>
-        <h1>Home Page</h1>
-        <h2>Jordan Lewis</h2>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="personalProjects.html">Personal Projects</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="intro">
-        <h2>Welcome to My Portfolio</h2>
-        <p>Hi, I'm Jordan Lewis. Check out my work and feel free to reach out to me!</p>
-        <p>I have some different pages, I hope you check them out!</p>
-    </section>
-    <footer>
-        <p>&copy; 2024 Your Website</p>
-    </footer>
-</body>
+<body class="light">
 
+<header>
+    <h1>Jordan Lewis</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="personalProjects.html">Projects</a></li>
+        </ul>
+    </nav>
+</header>
+
+<button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
+
+<section class="hero" id="home">
+    <h1>Hello, I'm Jordan</h1>
+    <p id="typewriter"></p>
+    <a href="personalProjects.html">View Projects</a>
+    <a href="about.html">About Me</a>
+</section>
+
+<footer>
+    <p>&copy; 2025 Jordan Lewis</p>
+</footer>
+
+<script>
+    /* Dark Mode Toggle */
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
+        document.querySelector('.toggle-btn').textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+    }
+
+    /* Typewriter Effect */
+    const text = "I build cool web projects!";
+    const typewriterElement = document.getElementById("typewriter");
+    let index = 0;
+
+    function typeWriter() {
+        if (index < text.length) {
+            typewriterElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+    window.onload = typeWriter;
+</script>
+
+</body>
 </html>
