@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects - Jordan Lewis</title>
 <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; scroll-behavior: smooth; transition: background 0.3s, color 0.3s; }
+    html, body { margin:0; padding:0; height:100%; }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
     body.light { background: #f4f4f9; color: black; }
     body.dark { background: #1c1c1c; color: #f4f4f9; }
 
@@ -34,12 +42,18 @@
 
     .toggle-btn { position: fixed; top: 20px; right: 20px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-    footer { padding: 20px; text-align: center; transition: background 0.3s; }
+    footer {
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+      transition: background 0.3s;
+    }
     body.light footer { background: #4169E1; color: white; }
     body.dark footer { background: #000; color: #f4f4f9; }
 
     #typewriter { min-height: 2em; margin-bottom: 20px; }
 </style>
+
 </head>
 <body class="light">
 
