@@ -1,158 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home - Jordan Lewis</title>
-<style>
-/* Fonts & General */
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 0; 
-    padding: 0; 
-    scroll-behavior: smooth; 
-    transition: background 0.3s, color 0.3s; 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures body takes full height */
-}
-header { 
-    padding: 20px; 
-    text-align: center; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    transition: background 0.3s; 
-}
-nav ul { 
-    list-style: none; 
-    margin: 0; 
-    padding: 0; 
-    text-align: center; 
-}
-nav ul li { 
-    display: inline; 
-    margin: 0 15px; 
-}
-nav ul li a { 
-    text-decoration: none; 
-    font-weight: bold; 
-    transition: color 0.3s; 
-}
-nav ul li a:hover { 
-    text-decoration: underline; 
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Jordan Lewis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: 
+        linear-gradient(to right, #0d1b4c, #6a1b9a) left / 33.3% no-repeat,
+        white center / 33.3% no-repeat,
+        linear-gradient(to right, #0d1b4c, #6a1b9a) right / 33.3% no-repeat;
+      background-color: white;
+      color: #000;
+    }
 
-/* Light & Dark mode colors */
-body.light { background: #f4f4f9; color: #000; }
-body.light header { background: #4169E1; color: white; }
-body.light nav ul li a { color: white; }
-body.dark { background: #1c1c1c; color: #f4f4f9; }
-body.dark header { background: #000; color: #f4f4f9; }
-body.dark nav ul li a { color: #f4f4f9; }
+    header {
+      background: linear-gradient(to right, #0d1b4c, #6a1b9a);
+      color: white;
+      padding: 20px;
+    }
 
-/* Hero */
-.hero { 
-    flex: 1; /* Fills available space */
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    padding: 20px; 
-    text-align: center; 
-    transition: background 0.3s; 
-}
-.hero h1 { font-size: 3rem; margin-bottom: 20px; }
-.hero p { font-size: 1.5rem; margin-bottom: 30px; min-height: 2em; }
-.hero a { 
-    display: inline-block; 
-    margin: 5px; 
-    padding: 10px 25px; 
-    background: #fff; 
-    color: #4169E1; 
-    text-decoration: none; 
-    font-weight: bold; 
-    border-radius: 5px; 
-    transition: 0.3s; 
-}
-.hero a:hover { background: #f0f0f0; }
+    header h1 {
+      margin: 0 0 15px 0;
+    }
 
-/* Dark Mode Toggle */
-.toggle-btn { 
-    position: fixed; 
-    top: 20px; 
-    right: 20px; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-weight: bold; 
-    z-index: 2000; /* keeps it above header */
-}
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
 
-/* Footer */
-footer { 
-    padding: 20px; 
-    text-align: center; 
-    transition: background 0.3s; 
-}
-body.light footer { background: #4169E1; color: white; }
-body.dark footer { background: #000; color: #f4f4f9; }
-</style>
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
+    section {
+      padding: 50px 20px;
+    }
 
+    footer {
+      background: linear-gradient(to right, #0d1b4c, #6a1b9a);
+      color: white;
+      padding: 20px;
+      margin-top: auto;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+      section {
+        padding: 30px 15px;
+      }
+    }
+  </style>
 </head>
-<body class="light">
-
-<header>
-    <h1>Home</h1>
+<body>
+  <header>
+    <h1>Welcome to My Portfolio</h1>
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="personalProjects.html">Projects</a></li>
-            <li><a href="services.html">My Services</a></li>
-            <li><a href="contact.html">Contact Me</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="personalProjects.html">Projects</a></li>
+        <li><a href="services.html">My Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-<button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
+  <section>
+    <h2>Hello, I'm Jordan Lewis</h2>
+    <p>I’m a web developer who loves building clean and interactive websites. Explore my work and services below!</p>
+  </section>
 
-<section class="hero" id="home">
-    <h1>Hello, I'm Jordan</h1>
-    <p id="typewriter"></p>
-    <a href="personalProjects.html">View Projects</a>
-    <a href="about.html">About Me</a>
-</section>
-
-<footer>
+  <footer>
     <p>&copy; 2025 Jordan Lewis</p>
-</footer>
-
-<script>
-    /* Dark Mode Toggle */
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark');
-        document.body.classList.toggle('light');
-        document.querySelector('.toggle-btn').textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
-    }
-
-    /* Typewriter Effect */
-    const text = "I build cool web projects!";
-    const typewriterElement = document.getElementById("typewriter");
-    let index = 0;
-
-    function typeWriter() {
-        if (index < text.length) {
-            typewriterElement.textContent += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, 90);
-        }
-    }
-    window.onload = typeWriter;
-</script>
-
+  </footer>
 </body>
 </html>
