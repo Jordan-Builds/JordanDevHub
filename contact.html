@@ -55,14 +55,19 @@
       font-size: 2rem;
       margin-bottom: 20px;
       color: #0d1b4c;
+      position: relative;
+      z-index: 5;
     }
 
     section p {
       font-size: 1.1rem;
       margin-bottom: 30px;
       color: #6a1b9a;
+      position: relative;
+      z-index: 5;
     }
 
+    /* === BUTTON FIXED === */
     .contact-button {
       display: inline-block;
       background: linear-gradient(to right, #0d1b4c, #6a1b9a);
@@ -72,6 +77,8 @@
       border-radius: 8px;
       text-decoration: none;
       transition: transform 0.3s;
+      position: relative;
+      z-index: 10;
     }
 
     .contact-button:hover {
@@ -87,6 +94,7 @@
       height: 100%;
       overflow: hidden;
       z-index: 1;
+      pointer-events: none; /* THIS FIXES THE BUTTON */
     }
 
     .shape {
