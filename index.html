@@ -62,7 +62,14 @@
   }
 
   .hero h1 { font-size: 2.5rem; margin-bottom: 20px; color: #0d1b4c; }
-  .hero p { font-size: 1.2rem; margin-bottom: 30px; font-weight: bold; color: #6a1b9a; white-space: pre; }
+  .hero p { 
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+    font-weight: bold; 
+    color: #6a1b9a; 
+    white-space: pre; 
+  }
+
   .hero a {
     display: inline-block;
     margin: 10px;
@@ -90,21 +97,6 @@
     0% { transform: translateY(0) translateX(0); }
     50% { transform: translateY(-20px) translateX(20px); }
     100% { transform: translateY(0) translateX(0); }
-  }
-
-  /* Blinking cursor */
-  .cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1.2em;
-    background-color: #6a1b9a;
-    margin-left: 2px;
-    animation: blink 0.7s infinite;
-    vertical-align: bottom;
-  }
-  @keyframes blink {
-    0%, 50%, 100% { opacity: 1; }
-    25%, 75% { opacity: 0; }
   }
 
   /* FOOTER */
@@ -140,7 +132,7 @@
         <li><a href="about.html">About Me</a></li>
         <li><a href="personalProjects.html">Projects</a></li>
         <li><a href="services.html">My Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html">Contact Me</a></li>
       </ul>
     </nav>
   </header>
@@ -148,7 +140,7 @@
   <!-- HERO SECTION -->
   <section class="hero" id="home">
     <h1>Hello, I'm Jordan</h1>
-    <p id="typewriter"></p><span class="cursor"></span>
+    <p id="typewriter"></p>
     <a href="personalProjects.html">View Projects</a>
     <a href="about.html">About Me</a>
 

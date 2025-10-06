@@ -15,18 +15,17 @@ body {
   scroll-behavior: smooth;
   transition: background 0.3s, color 0.3s;
 
-  /* === MODIFIED: Three-section horizontal gradient background === */
+  /* Three-section horizontal gradient background */
   background: 
-    linear-gradient(to right, #0d1b4c, #6a1b9a) left / 33.3% no-repeat, /* left gradient */
-    white center / 33.3% no-repeat,                                   /* middle white */
-    linear-gradient(to right, #0d1b4c, #6a1b9a) right / 33.3% no-repeat; /* right gradient */
+    linear-gradient(to right, #0d1b4c, #6a1b9a) left / 33.3% no-repeat,
+    white center / 33.3% no-repeat,
+    linear-gradient(to right, #0d1b4c, #6a1b9a) right / 33.3% no-repeat;
   background-color: white;
   color: black;
 }
 
 body.light { color: black; }
 body.dark { 
-  /* === MODIFIED: Dark mode body gradient === */
   background: 
     linear-gradient(to right, #050c2b, #3a0f5c) left / 33.3% no-repeat,
     #111 center / 33.3% no-repeat,
@@ -36,28 +35,25 @@ body.dark {
 
 /* === HEADER === */
 header { padding: 20px; text-align: center; transition: background 0.3s; }
-header h1 { margin: 0; }
-body.light header { 
-  /* === MODIFIED: Header gradient === */
-  background: linear-gradient(to right, #0d1b4c, #6a1b9a); 
-  color: white; 
-}
-body.dark header { 
-  background: linear-gradient(to right, #050c2b, #3a0f5c); /* dark gradient */
-  color: #f4f4f9; 
-}
+header h1 { margin: 0; font-size: 2rem; }
+body.light header { background: linear-gradient(to right, #0d1b4c, #6a1b9a); color: white; }
+body.dark header { background: linear-gradient(to right, #050c2b, #3a0f5c); color: #f4f4f9; }
 
 nav ul { list-style: none; margin:0; padding:0; text-align:center; }
-nav ul li { display:inline; margin:0 15px; }
+nav ul li { display:inline-block; margin:0 15px; }
 nav ul li a { text-decoration:none; font-weight:bold; transition: color 0.3s; }
 body.light nav ul li a { color:white; }
 body.dark nav ul li a { color:#f4f4f9; }
 nav ul li a:hover { text-decoration:underline; }
 
 /* === MAIN SECTION === */
-section { padding:50px; max-width:1000px; margin:auto; }
+section { padding:50px 20px; max-width:1000px; margin:auto; }
 
-.projects { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+.projects { 
+  display:grid; 
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); 
+  gap:20px; 
+}
 .project-card { 
   background:#f0f0f0; 
   padding:20px; 
@@ -73,13 +69,6 @@ body.dark .project-card { background: #333; color: #f4f4f9; }
 body.dark .project-card a { color: #87CEFA; }
 .project-card a:hover { text-decoration: underline; }
 
-/* === TOGGLE BUTTON === */
-.toggle-btn { position: fixed; top: 20px; right: 20px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; 
-  background: linear-gradient(to right, #0d1b4c, #6a1b9a); /* === MODIFIED === */
-  color: white;
-}
-body.dark .toggle-btn { background: linear-gradient(to right, #050c2b, #3a0f5c); }
-
 /* === FOOTER === */
 footer {
   padding: 20px;
@@ -87,24 +76,63 @@ footer {
   margin-top: auto;
   transition: background 0.3s;
 }
-body.light footer { 
-  /* === MODIFIED: Footer gradient === */
-  background: linear-gradient(to right, #0d1b4c, #6a1b9a); 
-  color: white; 
-}
-body.dark footer { 
-  background: linear-gradient(to right, #050c2b, #3a0f5c); 
-  color: #f4f4f9; 
+body.light footer { background: linear-gradient(to right, #0d1b4c, #6a1b9a); color: white; }
+body.dark footer { background: linear-gradient(to right, #050c2b, #3a0f5c); color: #f4f4f9; }
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  nav ul li {
+    margin: 0 10px;
+  }
 }
 
-#typewriter { min-height: 2em; margin-bottom: 20px; }
+@media (max-width: 768px) {
+  /* Stack navigation links */
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  /* Simplify background for small screens */
+  body {
+    background: linear-gradient(to bottom, #0d1b4c, #6a1b9a, white);
+  }
+
+  section {
+    padding: 40px 15px;
+  }
+
+  .project-card {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul li a {
+    font-size: 0.95rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+  }
+}
 </style>
-
 </head>
 <body class="light">
 
 <header>
-    <h1 id="typewriter"></h1>
+    <h1>Personal Projects</h1>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -115,7 +143,6 @@ body.dark footer {
         </ul>
     </nav>
 </header>
-
 
 <section class="projects">
     <div class="project-card">
@@ -133,23 +160,6 @@ body.dark footer {
 <footer>
     <p>&copy; 2025 Jordan Lewis</p>
 </footer>
-
-<script>
-
-    // Typewriter Effect for H1
-    const text = "Personal Projects";
-    const typewriterElement = document.getElementById("typewriter");
-    let index = 0;
-
-    function typeWriter() {
-        if(index < text.length){
-            typewriterElement.textContent += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, 100);
-        }
-    }
-    typeWriter();
-</script>
 
 </body>
 </html>
