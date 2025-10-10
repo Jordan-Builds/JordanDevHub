@@ -6,94 +6,98 @@
 <title>Projects - Jordan Lewis</title>
 <style>
 /* === GENERAL STYLES === */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+html, body { margin:0; padding:0; height:100%; }
 body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   scroll-behavior: smooth;
-  background: white;
+  background: white; /* keep background white */
   color: black;
 }
 
 /* === HEADER === */
-header {
-  padding: 20px;
-  text-align: center;
-  background: linear-gradient(to right, #0d1b4c, #6a1b9a);
-  color: white;
+header { 
+  padding: 20px; 
+  text-align: center; 
+  background: linear-gradient(to right, #0d1b4c, #6a1b9a); 
+  color: white; 
 }
-header h1 {
-  margin: 0;
-  font-size: 2rem;
+header h1 { 
+  margin: 0; 
+  font-size: 2rem; 
 }
 
-nav ul {
-  list-style: none;
-  margin: 10px 0 0;
-  padding: 0;
-  text-align: center;
+nav ul { 
+  list-style: none; 
+  margin:0; 
+  padding:0; 
+  text-align:center; 
 }
-nav ul li {
-  display: inline-block;
-  margin: 0 15px;
+nav ul li { 
+  display:inline-block; 
+  margin:0 15px; 
 }
-nav ul li a {
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-  transition: color 0.3s;
+nav ul li a { 
+  text-decoration:none; 
+  font-weight:bold; 
+  color:white; 
+  transition: color 0.3s; 
 }
-nav ul li a:hover {
-  text-decoration: underline;
+nav ul li a:hover { 
+  text-decoration:underline; 
 }
 
 /* === MAIN SECTION === */
-section {
-  padding: 50px 20px;
-  max-width: 1000px;
-  margin: auto;
+section { 
+  flex: 1;
+  padding:50px 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+.projects { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:25px; 
+  width: 100%;
+  max-width: 500px; /* controls width of centered cards */
 }
 
-.project-card {
-  background: #f8f8f8;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: left;
-  transition: transform 0.3s, box-shadow 0.3s;
+.project-card { 
+  background:#f8f8f8; 
+  width: 100%;
+  padding:25px; 
+  border-radius:10px; 
+  box-shadow:0 4px 10px rgba(0,0,0,0.1); 
+  transition: transform 0.3s; 
+  text-align: center;
 }
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+
+.project-card:hover { 
+  transform: translateY(-5px); 
 }
-.project-card h3 {
-  margin-bottom: 10px;
-  color: #0d1b4c;
+
+.project-card h3 { 
+  margin-bottom:10px; 
+  font-size: 1.2rem; 
 }
-.project-card p {
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-  line-height: 1.5;
+.project-card p { 
+  font-size:0.95rem; 
+  margin-bottom:10px; 
 }
-.project-card a {
-  text-decoration: none;
-  color: #6a1b9a;
-  font-weight: bold;
+.project-card a { 
+  text-decoration:none; 
+  color:#4169E1; 
+  font-weight:bold; 
+  transition: color 0.3s; 
 }
-.project-card a:hover {
-  text-decoration: underline;
+.project-card a:hover { 
+  text-decoration: underline; 
 }
 
 /* === FOOTER === */
@@ -107,17 +111,17 @@ footer {
 
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-
   nav ul li {
     display: block;
     margin: 10px 0;
   }
 
   section {
-    padding: 40px 15px;
+    padding: 30px 15px;
+  }
+
+  .projects {
+    max-width: 90%; /* gives padding on mobile */
   }
 
   .project-card {
@@ -126,54 +130,45 @@ footer {
 }
 
 @media (max-width: 480px) {
-  header h1 {
-    font-size: 1.5rem;
-  }
-
-  nav ul li a {
-    font-size: 0.95rem;
-  }
-
-  .project-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .project-card p {
-    font-size: 0.9rem;
-  }
+  header h1 { font-size: 1.5rem; }
+  nav ul li a { font-size: 0.95rem; }
+  .project-card h3 { font-size: 1.1rem; }
+  .project-card p { font-size: 0.85rem; }
 }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Personal Projects</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="personalProjects.html">Projects</a></li>
-      <li><a href="services.html">My Services</a></li>
-      <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-  </nav>
+    <h1>Personal Projects</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="personalProjects.html">Projects</a></li>
+            <li><a href="services.html">My Services</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
 </header>
 
-<section class="projects">
-  <div class="project-card">
-    <h3>Bakery Website</h3>
-    <p>Website I created for my cousin on GoDaddy to promote her bakery business.</p>
-    <a href="https://christinespatisseries.com/" target="_blank">Visit Website</a>
-  </div>
-  <div class="project-card">
-    <h3>Tkinter Database UI</h3>
-    <p>Python UI for a movie and TV show database. Without the backend database, it only shows the UI.</p>
-    <a href="movieDB.py">View Code</a>
+<section>
+  <div class="projects">
+    <div class="project-card">
+        <h3>Bakery Website</h3>
+        <p>Website I created for my cousin on GoDaddy to promote her bakery business.</p>
+        <a href="https://christinespatisseries.com/" target="_blank">Visit Website</a>
+    </div>
+    <div class="project-card">
+        <h3>Tkinter Database UI</h3>
+        <p>Python UI for a movie and TV show database. Without the backend database, it only shows the UI.</p>
+        <a href="movieDB.py">View Code</a>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2025 Jordan Lewis</p>
+    <p>&copy; 2025 Jordan Lewis</p>
 </footer>
 
 </body>
