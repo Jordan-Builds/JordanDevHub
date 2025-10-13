@@ -27,6 +27,7 @@ header {
 header h1 { 
   margin: 0; 
   font-size: 2rem; 
+  margin-bottom: 15px;
 }
 
 nav ul { 
@@ -48,6 +49,14 @@ nav ul li a {
 nav ul li a:hover { 
   text-decoration:underline; 
 }
+.logo-fixed {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    height: 100px; 
+    width: auto;
+    z-index: 1000; /* make sure it sits above everything */
+  }
 
 /* === MAIN SECTION === */
 section { 
@@ -138,6 +147,7 @@ footer {
 </style>
 </head>
 <body>
+  <img src="J-removebg-preview.png" alt="Jordan Lewis Logo" class="logo-fixed">
 
 <header>
     <h1>Personal Projects</h1>

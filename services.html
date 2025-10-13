@@ -5,60 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Services</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0; padding: 0;
-    background-color: #f4f4f9; color: #000; text-align: center;
+  html,body{
+    margin:0;
+    padding:0;
+    background:#f4f4f9;
+    color:#000;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    overflow-x:hidden;
   }
 
-  header { background: linear-gradient(to right, #0d1b4c, #6a1b9a); color: white; padding: 20px; }
-  nav ul { list-style: none; padding: 0; margin: 0; }
-  nav ul li { display: inline; margin: 0 15px; }
-  nav ul li a { color: white; text-decoration: none; font-weight: bold; }
-
-  section { padding: 50px 20px; }
-  h2 { color: #4169E1; margin-bottom: 20px; }
-  p { margin-bottom: 30px; }
-
-  .service-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-
-  /* === Animated Service Cards === */
-  .service-card {
-    background: #fff; padding: 20px; width: 300px; border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.4s, box-shadow 0.4s, border-top 0.4s;
-    border-top: 5px solid transparent;
-    border-image: linear-gradient(90deg, #4169E1, #6a1b9a) 1;
+  /* completely isolated fixed logo */
+  .logo-fixed {
+    position:fixed;
+    top:20px;
+    left:20px;
+    height:100px;
+    width:auto;
+    z-index:100000;
+    pointer-events:none;
+    transform:none;
+    backface-visibility:hidden;
   }
 
-  .service-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    border-top: 5px solid transparent;
-    border-image: linear-gradient(90deg, #6a1b9a, #4169E1) 1;
+  header{
+    background:linear-gradient(to right,#0d1b4c,#6a1b9a);
+    color:#fff;
+    padding:60px 20px 25px 20px;
+  }
+  header h1{
+    margin:0;
+    font-size:2rem;
+  }
+  nav ul{
+    list-style:none;
+    margin:15px 0 0 0;
+    padding:0;
+  }
+  nav ul li{
+    display:inline-block;
+    margin:0 15px;
+  }
+  nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    transition:color .3s;
+  }
+  nav ul li a:hover{text-decoration:underline;}
+
+  section{padding:40px 20px;}
+  h2{color:#4169E1;margin-bottom:20px;}
+  p{margin-bottom:30px;}
+
+  .service-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+  }
+  .service-card{
+    background:#fff;
+    padding:20px;
+    width:300px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    text-align:center;
+    transition:transform .4s,box-shadow .4s,border-top .4s;
+    border-top:5px solid transparent;
+    border-image:linear-gradient(90deg,#4169E1,#6a1b9a) 1;
+  }
+  .service-card:hover{
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    border-image:linear-gradient(90deg,#6a1b9a,#4169E1) 1;
+  }
+  .service-card h3{color:#4169E1;margin-bottom:15px;}
+  .service-card p{font-size:1rem;margin-bottom:20px;}
+
+  footer{
+    background:linear-gradient(to right,#0d1b4c,#6a1b9a);
+    color:#fff;
+    padding:20px;
+    margin-top:40px;
   }
 
-  .service-card h3 { color: #4169E1; margin-bottom: 15px; }
-  .service-card p { font-size: 1rem; margin-bottom: 20px; }
-
-  .contact-button {
-    display: inline-block; background-color: #4169E1; color: white;
-    padding: 10px 20px; font-size: 1rem; border-radius: 5px;
-    text-decoration: none; transition: background-color 0.3s;
-  }
-  .contact-button:hover { background-color: #27408B; }
-
-  footer { background: linear-gradient(to right, #0d1b4c, #6a1b9a); color: white; padding: 20px; margin-top: 40px; }
-
-  /* --- Responsive --- */
-  @media (max-width: 768px) {
-    nav ul li { display: block; margin: 10px 0; }
-    .service-container { flex-direction: column; align-items: center; }
+  @media(max-width:768px){
+    nav ul li{display:block;margin:10px 0;}
+    .service-container{flex-direction:column;align-items:center;}
+    header{padding-top:100px;}
   }
 </style>
 </head>
 <body>
+
+<!-- logo lives completely outside scrollable content -->
+<img src="J-removebg-preview.png" alt="Jordan Lewis Logo" class="logo-fixed" />
 
 <header>
   <h1>My Services</h1>
@@ -76,7 +118,7 @@
 <section>
   <h2>What I Offer</h2>
   <p>I provide a range of services to help bring your ideas to life. Click “Contact Me” to get started!</p>
-  
+
   <div class="service-container">
     <div class="service-card">
       <h3>Website Development</h3>
