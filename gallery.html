@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #000;
+  }
+
+  /* --- FIXED LOGO --- */
+  .logo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .logo-fixed {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    height: 90px;
+    width: auto;
+    pointer-events: none;
+    z-index: 9999;
+    transform: none;
+    backface-visibility: hidden;
+    will-change: transform;
+    image-rendering: crisp-edges;
+  }
+
+  header {
+    background: linear-gradient(to right, #0d1b4c, #6a1b9a);
+    color: #fff;
+    padding: 60px 20px 25px 20px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  }
+
+  nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color .3s;
+  }
+
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+
+  h2 {
+    color: #4169E1;
+    margin-bottom: 20px;
+  }
+
+  /* --- GALLERY --- */
+  .gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+  }
+
+  .main-image {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+
+  .arrow:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .prev { left: -60px; }
+  .next { right: -60px; }
+
+  /* --- THUMBNAILS --- */
+  .thumbnail-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .thumb {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 2px solid transparent;
+  }
+
+  .thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .thumb.active {
+    border: 2px solid #4169E1;
+  }
+
+  footer {
+    background: linear-gradient(to right, #0d1b4c, #6a1b9a);
+    color: #fff;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  @media(max-width:768px){
+    .prev { left: 10px; }
+    .next { right: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FIXED LOGO -->
+<div class="logo-container">
+  <img src="img/J-removebg-preview.png" alt="Jordan Lewis Logo" class="logo-fixed" />
+</div>
+
+<header>
+  <h1>Gallery</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="personalProjects.html">Personal Projects</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section>
+  <h2>My Photography Work</h2>
+  <p>Click thumbnails or use arrows to browse photos.</p>
+
+  <div class="gallery-wrapper">
+    <button class="arrow prev" onclick="changeImage(-1)">❮</button>
+    <img id="mainImage" class="main-image" src="img/flowers_b&w.JPG" alt="Main Photo">
+    <button class="arrow next" onclick="changeImage(1)">❯</button>
+  </div>
+
+  <div class="thumbnail-row">
+    <img class="thumb active" src="img/flowers_b&w.JPG" onclick="setImage(0)">
+    <img class="thumb" src="img/flowers.JPG" onclick="setImage(1)">
+    <img class="thumb" src="img/leaves.JPG" onclick="setImage(2)">
+    <img class="thumb" src="img/nature.JPG" onclick="setImage(3)">
+    <img class="thumb" src="img/rocks.JPG" onclick="setImage(4)">
+    <img class="thumb" src="img/trees.JPG" onclick="setImage(5)">
+    <img class="thumb" src="img/shadowheart(1).JPG" onclick="setImage(6)">
+    <img class="thumb" src="img/shadowheart.JPG" onclick="setImage(7)">
+    <img class="thumb" src="img/shadowlooking.JPG" onclick="setImage(8)">
+    <img class="thumb" src="img/shadowme.JPG" onclick="setImage(9)">
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Jordan Lewis</p>
+</footer>
+
+<script>
+  const images = [
+    "img/flowers_b&w.JPG",
+    "img/flowers.JPG",
+    "img/leaves.JPG",
+    "img/nature.JPG",
+    "img/rocks.JPG",
+    "img/trees.JPG",
+    "img/shadowheart(1).JPG",
+    "img/shadowheart.JPG",
+    "img/shadowlooking.JPG",
+    "img/shadowme.JPG"
+  ];
+
+  let currentIndex = 0;
+  const mainImage = document.getElementById("mainImage");
+  const thumbs = document.querySelectorAll(".thumb");
+
+  function setImage(index) {
+    currentIndex = index;
+    mainImage.src = images[index];
+    thumbs.forEach(t => t.classList.remove("active"));
+    thumbs[index].classList.add("active");
+  }
+
+  function changeImage(direction) {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    setImage(currentIndex);
+  }
+</script>
+
+</body>
+</html>
