@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gallery</title>
+
 <style>
   html, body {
     margin: 0;
     padding: 0;
     background: #f4f4f9;
+    color: #000;
     font-family: Arial, sans-serif;
     text-align: center;
-    color: #000;
+    overflow-x: hidden;
   }
 
-  /* --- FIXED LOGO --- */
-  .logo-container {
+  /* --- SUPER FIXED LOGO --- */
+  #true-fixed-logo {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 15px;
+    left: 15px;
+    z-index: 100000;
     pointer-events: none;
-    z-index: 9999;
-  }
-
-  .logo-fixed {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    height: 90px;
-    width: auto;
-    pointer-events: none;
-    z-index: 9999;
-    transform: none;
-    backface-visibility: hidden;
+    width: 100px;
+    height: auto;
+    transform: translateZ(0);
     will-change: transform;
+    backface-visibility: hidden;
+    contain: layout paint size style;
+  }
+
+  #true-fixed-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
     image-rendering: crisp-edges;
   }
 
   header {
     background: linear-gradient(to right, #0d1b4c, #6a1b9a);
     color: #fff;
-    padding: 60px 20px 25px 20px;
+    padding: 80px 20px 25px 20px;
   }
 
   header h1 {
@@ -51,8 +51,8 @@
 
   nav ul {
     list-style: none;
+    margin: 15px 0 0 0;
     padding: 0;
-    margin: 10px 0 0;
   }
 
   nav ul li {
@@ -64,7 +64,7 @@
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    transition: color .3s;
+    transition: color 0.3s;
   }
 
   nav ul li a:hover {
@@ -80,71 +80,56 @@
     margin-bottom: 20px;
   }
 
-  /* --- GALLERY --- */
-  .gallery-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    max-width: 700px;
-    margin: 0 auto 30px auto;
+  p {
+    margin-bottom: 30px;
   }
 
-  .main-image {
-    width: 100%;
-    max-height: 450px;
-    object-fit: cover;
+  /* --- Carousel --- */
+  .carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    gap: 20px;
+    scrollbar-width: none;
+  }
+
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-item {
+    min-width: 250px;
+    flex: 0 0 auto;
+    background: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.4);
-    color: white;
-    border: none;
-    font-size: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.4s, box-shadow 0.4s;
     cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 50%;
-    transition: background 0.3s;
   }
 
-  .arrow:hover {
-    background: rgba(255,255,255,0.3);
+  .carousel-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .prev { left: -60px; }
-  .next { right: -60px; }
-
-  /* --- THUMBNAILS --- */
-  .thumbnail-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .thumb {
-    width: 100px;
-    height: 60px;
+  .carousel-item img {
+    width: 100%;
+    max-height: 200px;
     object-fit: cover;
     border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
-    border: 2px solid transparent;
+    margin-bottom: 10px;
   }
 
-  .thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  .carousel-item h3 {
+    color: #4169E1;
+    margin-bottom: 10px;
   }
 
-  .thumb.active {
-    border: 2px solid #4169E1;
+  .carousel-item p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
   }
 
   footer {
@@ -154,17 +139,61 @@
     margin-top: 40px;
   }
 
-  @media(max-width:768px){
-    .prev { left: 10px; }
-    .next { right: 10px; }
+  /* --- MOBILE FRIENDLY ADJUSTMENTS --- */
+  @media (max-width: 768px) {
+    header {
+      padding: 100px 15px 25px 15px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav ul li {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .carousel-container {
+      gap: 10px;
+      padding: 15px 10px;
+    }
+
+    .carousel-item {
+      min-width: 200px;
+    }
+
+    .carousel-item img {
+      max-height: 160px;
+    }
+
+    #true-fixed-logo {
+      width: 80px;
+      top: 10px;
+      left: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel-item {
+      min-width: 170px;
+    }
+
+    .carousel-item img {
+      max-height: 140px;
+    }
+
+    header {
+      padding-top: 90px;
+    }
   }
 </style>
 </head>
 <body>
 
 <!-- FIXED LOGO -->
-<div class="logo-container">
-  <img src="img/J-removebg-preview.png" alt="Jordan Lewis Logo" class="logo-fixed" />
+<div id="true-fixed-logo">
+  <img src="img/J-removebg-preview.png" alt="Jordan Lewis Logo" />
 </div>
 
 <header>
@@ -183,62 +212,80 @@
 
 <section>
   <h2>My Photography Work</h2>
-  <p>Click thumbnails or use arrows to browse photos.</p>
+  <p>Scroll through my projects below!</p>
 
-  <div class="gallery-wrapper">
-    <button class="arrow prev" onclick="changeImage(-1)">❮</button>
-    <img id="mainImage" class="main-image" src="img/flowers_b&w.JPG" alt="Main Photo">
-    <button class="arrow next" onclick="changeImage(1)">❯</button>
-  </div>
-
-  <div class="thumbnail-row">
-    <img class="thumb active" src="img/flowers_b&w.JPG" onclick="setImage(0)">
-    <img class="thumb" src="img/flowers.JPG" onclick="setImage(1)">
-    <img class="thumb" src="img/leaves.JPG" onclick="setImage(2)">
-    <img class="thumb" src="img/nature.JPG" onclick="setImage(3)">
-    <img class="thumb" src="img/rocks.JPG" onclick="setImage(4)">
-    <img class="thumb" src="img/trees.JPG" onclick="setImage(5)">
-    <img class="thumb" src="img/shadowheart(1).JPG" onclick="setImage(6)">
-    <img class="thumb" src="img/shadowheart.JPG" onclick="setImage(7)">
-    <img class="thumb" src="img/shadowlooking.JPG" onclick="setImage(8)">
-    <img class="thumb" src="img/shadowme.JPG" onclick="setImage(9)">
+  <div class="carousel-container">
+    <div class="carousel-item">
+      <img src="img/flowers_b&w.JPG" alt="Nature">
+      <h3>Nature</h3>
+      <p>When flowers bloom, it tells a story.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/flowers.JPG" alt="Events">
+      <h3>Events</h3>
+      <p>Documenting moments that matter.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/leaves.JPG" alt="Nature">
+      <h3>Nature</h3>
+      <p>Exploring the beauty of the outdoors.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/nature.JPG" alt="Urban">
+      <h3>Urban</h3>
+      <p>Capturing the city vibe and architecture.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/rocks.JPG" alt="Food">
+      <h3>Food</h3>
+      <p>Delicious dishes and culinary art.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/trees.JPG" alt="Travel">
+      <h3>Travel</h3>
+      <p>Adventures from around the world.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/shadowheart(1).JPG" alt="Abstract">
+      <h3>Abstract</h3>
+      <p>Creative compositions and artistic experiments.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/shadowheart.JPG" alt="Pets">
+      <h3>Pets</h3>
+      <p>Capturing your furry friends in their element.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/shadowlooking.JPG" alt="Architecture">
+      <h3>Architecture</h3>
+      <p>Unique buildings and design perspectives.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/shadowme.JPG" alt="Fashion">
+      <h3>Fashion</h3>
+      <p>Stylish moments and editorial shots.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/gingerbread.JPG" alt="Abstract">
+      <h3>Abstract</h3>
+      <p>Creative compositions and artistic experiments.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/eclipise.JPG" alt="Abstract">
+      <h3>Abstract</h3>
+      <p>Creative compositions and artistic experiments.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="img/Shallow Depth19.JPG" alt="Abstract">
+      <h3>Abstract</h3>
+      <p>Creative compositions and artistic experiments.</p>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>&copy; 2025 Jordan Lewis</p>
 </footer>
-
-<script>
-  const images = [
-    "img/flowers_b&w.JPG",
-    "img/flowers.JPG",
-    "img/leaves.JPG",
-    "img/nature.JPG",
-    "img/rocks.JPG",
-    "img/trees.JPG",
-    "img/shadowheart(1).JPG",
-    "img/shadowheart.JPG",
-    "img/shadowlooking.JPG",
-    "img/shadowme.JPG"
-  ];
-
-  let currentIndex = 0;
-  const mainImage = document.getElementById("mainImage");
-  const thumbs = document.querySelectorAll(".thumb");
-
-  function setImage(index) {
-    currentIndex = index;
-    mainImage.src = images[index];
-    thumbs.forEach(t => t.classList.remove("active"));
-    thumbs[index].classList.add("active");
-  }
-
-  function changeImage(direction) {
-    currentIndex = (currentIndex + direction + images.length) % images.length;
-    setImage(currentIndex);
-  }
-</script>
 
 </body>
 </html>
