@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Gallery</title>
 
 <style>
+  :root {
+    --primary: #0d1b4c;
+    --secondary: #6a1b9a;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
@@ -18,75 +27,78 @@
 
   /* --- FIXED LOGO --- */
   #true-fixed-logo {
-    position: fixed; /* stays in viewport */
-    top: 15px;
-    left: 15px;
-    width: 100px;
+    position: fixed;
+    top: env(safe-area-inset-top, 10px);
+    left: 12px;
+    width: 80px;
     z-index: 9999;
   }
 
   #true-fixed-logo img {
     width: 100%;
     height: auto;
-    display: block;
   }
 
+  /* --- HEADER --- */
   header {
-    background: linear-gradient(to right, #0d1b4c, #6a1b9a);
+    background: linear-gradient(to right, var(--primary), var(--secondary));
     color: #fff;
-    padding: 20px 20px 25px 20px;
+    padding: 90px 20px 25px;
     position: relative;
-    z-index: 1; /* ensures logo stays above */
   }
 
   header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.6rem;
+  }
+
+  /* --- NAV --- */
+  nav {
+    margin-top: 15px;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
   }
 
   nav ul {
     list-style: none;
-    margin: 15px 0 0 0;
     padding: 0;
+    margin: 15px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   nav ul li {
-    display: inline-block;
-    margin: 0 15px;
+    margin: 8px 12px;
   }
 
   nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
   }
 
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
-
+  /* --- SECTION --- */
   section {
-    padding: 40px 20px;
+    padding: 30px 16px;
   }
 
   h2 {
     color: #4169E1;
-    margin-bottom: 20px;
   }
 
-  p {
-    margin-bottom: 30px;
-  }
-
-  /* --- Carousel --- */
+  /* --- CAROUSEL --- */
   .carousel-container {
     display: flex;
+    gap: 16px;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 20px 0;
-    gap: 20px;
-    scrollbar-width: none;
+    padding: 20px 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .carousel-container::-webkit-scrollbar {
@@ -94,155 +106,113 @@
   }
 
   .carousel-item {
-    min-width: 250px;
     flex: 0 0 auto;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  .carousel-item:hover {
-    transform: scale(1.05);
+    min-width: 220px;
+    scroll-snap-align: center;
   }
 
   .carousel-item img {
     width: 100%;
-    height: auto;
-    max-height: 200px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 10px;
-    display: block;
-  }
-
-  .carousel-item h3,
-  .carousel-item p {
-    display: none !important;
-  }
-
-  footer {
-    background: linear-gradient(to right, #0d1b4c, #6a1b9a);
-    color: #fff;
-    padding: 20px;
-    margin-top: 40px;
+    border-radius: 12px;
   }
 
   /* --- LIGHTBOX --- */
   .lightbox {
     display: none;
     position: fixed;
-    z-index: 1000000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 100000;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-  }
-
-  .lightbox img {
-    max-width: 90%;
-    max-height: 85%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 
   .lightbox.show {
     display: flex;
-    animation: fadeIn 0.3s ease forwards;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  .lightbox img {
+    max-width: 92%;
+    max-height: 75%;
+    border-radius: 12px;
   }
 
-  /* --- Arrows --- */
   .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     font-size: 3rem;
     color: white;
+    padding: 12px;
     cursor: pointer;
     user-select: none;
-    padding: 10px 20px;
-    transition: opacity 0.3s;
   }
 
-  .arrow:hover {
-    opacity: 0.7;
+  .arrow.left { left: 10px; }
+  .arrow.right { right: 10px; }
+
+  /* --- FOOTER --- */
+  footer {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: #fff;
+    padding: 18px;
   }
 
-  .arrow.left {
-    left: 30px;
-  }
-
-  .arrow.right {
-    right: 30px;
-  }
-
-  /* --- MOBILE --- */
+  /* ---------- MOBILE ---------- */
   @media (max-width: 768px) {
-    header {
-      padding: 100px 15px 25px 15px;
+
+    .menu-toggle {
+      display: block;
     }
 
-    header h1 {
-      font-size: 1.5rem;
+    nav ul {
+      display: none;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+
+    nav ul.show {
+      display: flex;
     }
 
     nav ul li {
-      display: block;
-      margin: 10px 0;
-    }
-
-    .carousel-item {
-      min-width: 200px;
-    }
-
-    .carousel-item img {
-      max-height: 160px;
-    }
-
-    #true-fixed-logo {
-      width: 80px;
-      top: 10px;
-      left: 10px;
-    }
-
-    .arrow {
-      font-size: 2.5rem;
-      padding: 8px 12px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .carousel-item {
-      min-width: 170px;
-    }
-
-    .carousel-item img {
-      max-height: 140px;
+      margin: 12px 0;
     }
 
     header {
-      padding-top: 90px;
+      padding-top: 100px;
+    }
+
+    .carousel-item {
+      min-width: 180px;
+    }
+
+    .carousel-item img {
+      height: 140px;
+    }
+
+    .arrow {
+      font-size: 2.4rem;
     }
   }
 </style>
 </head>
+
 <body>
 
-<!-- FIXED LOGO -->
 <div id="true-fixed-logo">
-  <img src="img/J-removebg-preview.png" alt="Jordan Lewis Logo" />
+  <img src="img/J-removebg-preview.png" alt="Jordan Lewis Logo">
 </div>
 
 <header>
   <h1>Gallery</h1>
+
   <nav>
-    <ul>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <ul id="menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Me</a></li>
       <li><a href="personalProjects.html">Personal Projects</a></li>
@@ -256,29 +226,28 @@
 
 <section>
   <h2>My Photography Work</h2>
-  <p>Scroll through my projects below!</p>
+  <p>Swipe through my projects</p>
 
   <div class="carousel-container">
-    <div class="carousel-item"><img src="img/flowers_b&w.JPG" alt="Nature"></div>
-    <div class="carousel-item"><img src="img/flowers.JPG" alt="Events"></div>
-    <div class="carousel-item"><img src="img/leaves.JPG" alt="Nature"></div>
-    <div class="carousel-item"><img src="img/nature.JPG" alt="Urban"></div>
-    <div class="carousel-item"><img src="img/rocks.JPG" alt="Food"></div>
-    <div class="carousel-item"><img src="img/trees.JPG" alt="Travel"></div>
-    <div class="carousel-item"><img src="img/shadowheart(1).JPG" alt="Abstract"></div>
-    <div class="carousel-item"><img src="img/shadowheart.JPG" alt="Pets"></div>
-    <div class="carousel-item"><img src="img/shadowlooking.JPG" alt="Architecture"></div>
-    <div class="carousel-item"><img src="img/shadowme.JPG" alt="Fashion"></div>
-    <div class="carousel-item"><img src="img/gingerbread.JPG" alt="Abstract"></div>
-    <div class="carousel-item"><img src="img/eclipise.JPG" alt="Abstract"></div>
-    <div class="carousel-item"><img src="img/Shallow Depth19.JPG" alt="Abstract"></div>
+    <div class="carousel-item"><img src="img/flowers_b&w.JPG"></div>
+    <div class="carousel-item"><img src="img/flowers.JPG"></div>
+    <div class="carousel-item"><img src="img/leaves.JPG"></div>
+    <div class="carousel-item"><img src="img/nature.JPG"></div>
+    <div class="carousel-item"><img src="img/rocks.JPG"></div>
+    <div class="carousel-item"><img src="img/trees.JPG"></div>
+    <div class="carousel-item"><img src="img/shadowheart(1).JPG"></div>
+    <div class="carousel-item"><img src="img/shadowheart.JPG"></div>
+    <div class="carousel-item"><img src="img/shadowlooking.JPG"></div>
+    <div class="carousel-item"><img src="img/shadowme.JPG"></div>
+    <div class="carousel-item"><img src="img/gingerbread.JPG"></div>
+    <div class="carousel-item"><img src="img/eclipise.JPG"></div>
+    <div class="carousel-item"><img src="img/Shallow Depth19.JPG"></div>
   </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="arrow left" id="prev">&#10094;</span>
-  <img src="" alt="Enlarged Photo">
+  <img src="">
   <span class="arrow right" id="next">&#10095;</span>
 </div>
 
@@ -287,47 +256,45 @@
 </footer>
 
 <script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('menu');
+
+  menuToggle.onclick = () => menu.classList.toggle('show');
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
-  const images = Array.from(document.querySelectorAll('.carousel-item img'));
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
+  const images = [...document.querySelectorAll('.carousel-item img')];
+  let index = 0;
 
-  let currentIndex = 0;
-
-  images.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      currentIndex = index;
-      showImage();
+  images.forEach((img, i) => {
+    img.onclick = () => {
+      index = i;
+      lightboxImg.src = img.src;
       lightbox.classList.add('show');
-    });
+    };
   });
 
-  function showImage() {
-    lightboxImg.src = images[currentIndex].src;
-  }
-
-  prev.addEventListener('click', (e) => {
+  document.getElementById('prev').onclick = e => {
     e.stopPropagation();
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage();
-  });
+    index = (index - 1 + images.length) % images.length;
+    lightboxImg.src = images[index].src;
+  };
 
-  next.addEventListener('click', (e) => {
+  document.getElementById('next').onclick = e => {
     e.stopPropagation();
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage();
-  });
+    index = (index + 1) % images.length;
+    lightboxImg.src = images[index].src;
+  };
 
-  lightbox.addEventListener('click', () => {
-    lightbox.classList.remove('show');
-  });
+  lightbox.onclick = () => lightbox.classList.remove('show');
 
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('show')) return;
-    if (e.key === 'ArrowRight') next.click();
-    if (e.key === 'ArrowLeft') prev.click();
-    if (e.key === 'Escape') lightbox.classList.remove('show');
+  /* swipe support */
+  let startX = 0;
+  lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  lightbox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (dx > 50) document.getElementById('prev').click();
+    if (dx < -50) document.getElementById('next').click();
   });
 </script>
 
